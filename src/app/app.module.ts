@@ -5,11 +5,15 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { CustomFormComponent } from './custom-form/custom-form.component';
+import { CancallableInputComponent } from './cancallable-input/cancallable-input.component';
+import { CustomSelectComponent } from './custom-select/custom-select.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CustomFormComponent
+    CustomFormComponent,
+    CancallableInputComponent,
+    CustomSelectComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,8 @@
 <form [formGroup]="customForm">
-    <label>Name:</label>
-    <input formControlName="name" >
+    <label>number:</label>
+    <fu-cancallable-input formControlName="number">
+      <fu-custom-select #inputContent></fu-custom-select>
+    </fu-cancallable-input>
 </form>
 
-<p>Name: {{customForm.value.name}} </p>
+<p>Selected number: {{ customForm.value.number }} </p>

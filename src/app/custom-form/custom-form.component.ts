@@ -3,8 +3,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'fu-custom-form',
-  templateUrl: './custom-form.component.html',
-  styleUrls: ['./custom-form.component.css']
+  templateUrl: './custom-form.component.html'
 })
 export class CustomFormComponent implements OnInit {
 
@@ -14,7 +13,7 @@ export class CustomFormComponent implements OnInit {
 
   ngOnInit() {
     this.customForm = this.formBuilder.group( {
-      name: ''
+      number: 'two'
     } );
   }
 
