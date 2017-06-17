@@ -29,19 +29,14 @@ export class CancallableInputComponent implements ControlValueAccessor {
 
   registerOnChange( fn: any ) {
     this.contentChild.registerOnChange( ( newValue ) => {
-      console.log(' child changes ', newValue );
-
       if ( confirm('are you sure?') ) {
         this.value = newValue;
         fn( this.value );
       } else {
-        console.log('restoring old value:', this.value );
-
         //TODO: fix broken detectChanges to not to use setTimeout
         setTimeout( () => {
           this.contentChild.writeValue( this.value );
           this.changeDetectorRef.detectChanges();
-
         }, 0 );
       }
     } );

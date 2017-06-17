@@ -1,8 +1,13 @@
 <form [formGroup]="customForm">
-    <label>number:</label>
-    <fu-cancallable-input formControlName="number">
+    <label>number1:</label>
+    <fu-cancallable-input formControlName="number1">
+      <fu-custom-select #inputContent></fu-custom-select>
+    </fu-cancallable-input>
+
+    <label>number2:</label>
+    <fu-cancallable-input formControlName="number2">
       <fu-custom-select #inputContent></fu-custom-select>
     </fu-cancallable-input>
 </form>
 
-<p>Selected number: {{ customForm.value.number }} </p>
+<p>Selected numbers: {{ customForm.value | json }} </p>

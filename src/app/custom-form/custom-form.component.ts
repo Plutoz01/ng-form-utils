@@ -13,7 +13,8 @@ export class CustomFormComponent implements OnInit {
 
   ngOnInit() {
     this.customForm = this.formBuilder.group( {
-      number: 'two'
+      number1: 'one',
+      number2: 'two'
     } );
   }
 

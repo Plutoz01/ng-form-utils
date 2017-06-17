@@ -4,7 +4,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component( {
   selector: 'fu-custom-select',
-  templateUrl: './custom-select.component.html'
+  templateUrl: './custom-select.component.html',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
