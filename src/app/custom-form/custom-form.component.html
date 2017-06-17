@@ -1,0 +1,6 @@
+<form [formGroup]="customForm">
+    <label>Name:</label>
+    <input formControlName="name" >
+</form>
+
+<p>Name: {{customForm.value.name}} </p>
