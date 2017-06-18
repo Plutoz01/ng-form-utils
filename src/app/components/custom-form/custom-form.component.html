@@ -1,4 +1,6 @@
 <form [formGroup]="customForm">
+    <h1>Components with solution1</h1>
+
     <label>number1:</label>
     <fu-cancallable-input formControlName="number1">
       <fu-custom-select #inputContent></fu-custom-select>
@@ -8,6 +10,13 @@
     <fu-cancallable-input formControlName="number2">
       <fu-custom-select #inputContent></fu-custom-select>
     </fu-cancallable-input>
+
+    <h1>Components with solution2</h1>
+    <label>number3:</label>
+    <fu-cancallable-select formControlName="number3"></fu-cancallable-select>
+
+    <label>number4 (disabled confirmation asking):</label>
+    <fu-cancallable-select [isCancallable]="false" formControlName="number4"></fu-cancallable-select>
 </form>
 
 <p>Selected numbers: {{ customForm.value | json }} </p>

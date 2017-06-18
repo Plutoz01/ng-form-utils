@@ -1,6 +1,8 @@
 import { Component, forwardRef, ContentChild, ChangeDetectorRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+import { ConfirmationService } from '../../../services/confirmation.service';
+
 @Component({
   selector: 'fu-cancallable-input',
   templateUrl: './cancallable-input.component.html',
@@ -18,7 +20,10 @@ export class CancallableInputComponent implements ControlValueAccessor {
 
   value: any;
 
-  constructor( private changeDetectorRef: ChangeDetectorRef ) {}
+  constructor(
+    private changeDetectorRef: ChangeDetectorRef,
+    private confirmationService: ConfirmationService
+  ) {}
 
   writeValue( newValue: any ) {
     if ( newValue !== this.value ) {
@@ -29,16 +34,18 @@ export class CancallableInputComponent implements ControlValueAccessor {
 
   registerOnChange( fn: any ) {
     this.contentChild.registerOnChange( ( newValue ) => {
-      if ( confirm('are you sure?') ) {
-        this.value = newValue;
-        fn( this.value );
-      } else {
-        //TODO: fix broken detectChanges to not to use setTimeout
-        setTimeout( () => {
-          this.contentChild.writeValue( this.value );
-          this.changeDetectorRef.detectChanges();
-        }, 0 );
-      }
+      this.confirmationService.askConfirmation$().subscribe( ( confirmationResult: boolean ) => {
+        if ( confirmationResult ) {
+          this.value = newValue;
+          fn( this.value );
+        } else {
+          //TODO: fix broken detectChanges to not to use setTimeout
+          setTimeout( () => {
+            this.contentChild.writeValue( this.value );
+            this.changeDetectorRef.detectChanges();
+          }, 0 );
+        }
+      } );
     } );
   }
 
